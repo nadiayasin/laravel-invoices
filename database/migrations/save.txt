@@ -1,0 +1,31 @@
+// products table 
+ لعمل ملاحظة تلقائية افتراضية 
+1- php artisan make:migration edit_products_set_description_default_value
+ في صفحة المايريشن
+2- public function up()
+{
+    Schema::table('post_photos', function (Blueprint $table) {
+
+        $table->integer('order')->default(0)->change();
+    });
+}
+
+3- Schema::table('photos', function (Blueprint $table) {
+
+    $table->integer('order')->default(NULL)->change();
+});
+
+4-  install the doctrine/dbal package.==== composer require doctrine/dbal
+
+////////////////////////////
+  /*
+        if(!isset($request['description'])){
+            $request['description'] = 'Auto';
+        }
+
+        $products=Products::select('description')->get();
+       if(isset ( $products) &&  $products->count()>0){
+           foreach ( $products as  $products){
+           $products->description =  $products->description == Null ?'Auto Note': 'description';
+              }
+       }*/
